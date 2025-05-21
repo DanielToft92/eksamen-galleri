@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Naturlig Skønhed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css"> <!-- For navbar/footer -->
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html">
+        <img src="billeder/logo.png" alt="Kunstnerens logo" class="logo">
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="gallery.html">Galleri</a></li>
+        <li><a href="about.html">Om mig</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+    </ul>
+    <div class="hamburger">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
+
+<!-- Kontakt Hero -->
+<section class="contact-hero">
+    <div class="hero-content">
+        <h1>Kontakt Mig</h1>
+        <p>Jeg vil rigtig gerne høre fra dig - om kunst, udstillinger eller specielle ønsker</p>
+    </div>
+</section>
+
+<!-- Kontaktsektion -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <!-- Kontaktformular -->
+            <div class="contact-form">
+                <h2>Send en besked</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Navn</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon (valgfri)</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Emne</label>
+                        <select id="subject" name="subject">
+                            <option value="question">Spørgsmål</option>
+                            <option value="commission">Bestilling</option>
+                            <option value="exhibition">Udstilling</option>
+                            <option value="other">Andet</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Besked</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send besked</button>
+                </form>
+            </div>
+
+            <!-- Kontaktinformation -->
+            <div class="contact-info">
+                <h2>Kontaktinformation</h2>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Adresse</h3>
+                        <p>Kunstnervej 42<br>4600 Køge</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Email</h3>
+                        <p>caroline@malerier.dk</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Telefon</h3>
+                        <p>+45 12 34 56 78</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Åbningstider</h3>
+                        <p>Galleri er åbent efter aftale</p>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Kort sektion -->
+<section class="map-section">
+    <div id="map"></div>
+</section>
+
+<!-- FAQ sektion -->
+<section class="faq-section" style="background-color: var(--lavender);">
+    <div class="container">
+        <h2>Ofte stillede spørgsmål</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <button class="faq-question">
+                    Kan jeg bestille et maleri i en speciel størrelse?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Ja, jeg modtager gerne specialbestillinger. Kontakt mig med dine ønsker til størrelse og motiv, så finder vi en løsning sammen.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Hvor lang tid tager en bestilling?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Standardmalerier tager typisk 2-4 uger afhængigt af arbejdsbelastning. Specialbestillinger kan tage op til 6-8 uger.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Leverer du også internationalt?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Ja, jeg sender malerier til hele verden. Fragtomkostninger varierer afhængigt af destination og størrelse.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    Kan jeg besøge dit atelier?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Ja, mit atelier er åbent efter aftale. Send mig en besked, så finder vi en passende tid.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <img src="images/logo-white.png" alt="Kunstnerens logo" class="footer-logo">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Hjem</a>
+            <a href="gallery.html">Galleri</a>
+            <a href="about.html">Om mig</a>
+            <a href="contact.html">Kontakt</a>
+            <a href="#">Privatlivspolitik</a>
+        </div>
+        <p class="copyright">© 2023 Naturlig Skønhed - Alle rettigheder forbeholdes</p>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/contact.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</body>
+</html>

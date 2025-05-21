@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galleri - Naturlig Skønhed</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/index.css"> <!-- For navbar/footer -->
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html">
+        <img src="billeder/logo.png" alt="Kunstnerens logo" class="logo">
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Hjem</a></li>
+        <li><a href="gallery.html">Galleri</a></li>
+        <li><a href="about.html">Om mig</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+    </ul>
+    <div class="hamburger">
+        <i class="fas fa-bars"></i>
+    </div>
+</nav>
+
+<!-- Galleri Hero -->
+<section class="gallery-hero">
+    <div class="hero-content">
+        <h1>Mine Malerier</h1>
+        <p>Udforsk hele samlingen af 64 unikke værker inspireret af naturens skønhed</p>
+    </div>
+</section>
+
+<!-- Filtreringsmuligheder -->
+<section class="filters">
+    <div class="container">
+        <div class="filter-group">
+            <label for="category">Kategori:</label>
+            <select id="category" class="filter-select">
+                <option value="all">Alle</option>
+                <option value="landscape">Landskaber</option>
+                <option value="flowers">Blomster</option>
+                <option value="animals">Dyr</option>
+                <option value="seasons">Årstider</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="medium">Teknik:</label>
+            <select id="medium" class="filter-select">
+                <option value="all">Alle</option>
+                <option value="oil">Olie</option>
+                <option value="acrylic">Akryl</option>
+                <option value="watercolor">Akvarel</option>
+                <option value="mixed">Mixet medium</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="sort">Sorter efter:</label>
+            <select id="sort" class="filter-select">
+                <option value="newest">Nyeste først</option>
+                <option value="oldest">Ældste først</option>
+                <option value="name">Navn (A-Å)</option>
+            </select>
+        </div>
+        <button id="reset-filters" class="btn btn-outline">Nulstil filtre</button>
+    </div>
+</section>
+
+<!-- Galleri Grid -->
+<section class="gallery-container">
+    <div class="container">
+        <div class="gallery-grid" id="gallery-grid">
+            <!-- Malerier indlæses via JavaScript -->
+        </div>
+        <div class="pagination">
+            <button id="prev-page" class="btn btn-outline" disabled>
+                <i class="fas fa-chevron-left"></i> Forrige
+            </button>
+            <span id="page-info">Side 1 af 4</span>
+            <button id="next-page" class="btn btn-outline">
+                Næste <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <img src="images/logo-white.png" alt="Kunstnerens logo" class="footer-logo">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Hjem</a>
+            <a href="gallery.html">Galleri</a>
+            <a href="about.html">Om mig</a>
+            <a href="#">Kontakt</a>
+            <a href="#">Privatlivspolitik</a>
+        </div>
+        <p class="copyright">© 2023 Naturlig Skønhed - Alle rettigheder forbeholdes</p>
+    </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script src="js/gallery.js"></script>
+</body>
+</html>

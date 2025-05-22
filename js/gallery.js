@@ -1,15 +1,33 @@
-// Maleri data - i en rigtig app ville dette komme fra en database
-const paintings = Array.from({ length: 64 }, (_, i) => ({
-    id: i + 1,
-    title: `Maleri ${i + 1}`,
-    category: ['landscape', 'flowers', 'animals', 'seasons'][Math.floor(Math.random() * 4)],
-    medium: ['oil', 'acrylic', 'watercolor', 'mixed'][Math.floor(Math.random() * 4)],
-    year: 2020 + Math.floor(Math.random() * 4),
-    imageUrl: `images/paintings/painting-${(i % 16) + 1}.jpg`, // Antager 16 unikke billeder der gentages
-    description: `Dette maleri er inspireret af naturen og skabt med stor passion. Værk ${i + 1} i serien.`
-}));
+// Maleri data - nu med konsekvent nummerering og korrekte billedesti
+const paintings = Array.from({ length: 64 }, (_, i) => {
+    const paintingNumber = i + 1;
+    return {
+        id: paintingNumber,
+        title: `Maleri ${paintingNumber}`,
+        category: getCategory(paintingNumber),
+        medium: getMedium(paintingNumber),
+        year: getYear(paintingNumber),
+        imageUrl: `images/billeder/${paintingNumber}.jpg`,
+        description: `Dette maleri er inspireret af naturen og skabt med stor passion. Værk ${paintingNumber} i serien.`
+    };
+});
 
-// DOM elementer
+// Hjælpefunktioner for at give meningfuld data baseret på maleri nummer
+function getCategory(number) {
+    const categories = ['landscape', 'flowers', 'animals', 'seasons'];
+    return categories[number % categories.length];
+}
+
+function getMedium(number) {
+    const mediums = ['oil', 'acrylic', 'watercolor', 'mixed'];
+    return mediums[number % mediums.length];
+}
+
+function getYear(number) {
+    return 2020 + (number % 4); // Fordeler årene mellem 2020-2023
+}
+
+// Resten af din eksisterende kode forbliver uændret...
 const galleryGrid = document.getElementById('gallery-grid');
 const categoryFilter = document.getElementById('category');
 const mediumFilter = document.getElementById('medium');
@@ -30,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
 });
 
-// Render galleri
+// Render galleri (samme som før)
 function renderGallery() {
     // Filtrering
     const category = categoryFilter.value;
@@ -47,9 +65,10 @@ function renderGallery() {
         if (sortBy === 'newest') return b.year - a.year;
         if (sortBy === 'oldest') return a.year - b.year;
         if (sortBy === 'name') return a.title.localeCompare(b.title);
-        return 0;
+        return a.id - b.id; // Standard sortering efter ID (nummerisk)
     });
 
+    // Resten af renderGallery funktionen forbliver uændret...
     // Pagination
     const totalPages = Math.ceil(filteredPaintings.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -98,7 +117,7 @@ function renderGallery() {
     }
 }
 
-// Lightbox
+// Resten af dine eksisterende funktioner (openLightbox, setupEventListeners) forbliver uændret...
 function openLightbox(painting) {
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -132,7 +151,6 @@ function openLightbox(painting) {
     });
 }
 
-// Event listeners
 function setupEventListeners() {
     categoryFilter.addEventListener('change', () => {
         currentPage = 1;

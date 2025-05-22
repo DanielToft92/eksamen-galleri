@@ -254,10 +254,11 @@
 
 /* Footer */
 footer {
-    background-color: var(--dark-text);
+    background-color: var(--green);
     color: var(--light-text);
     padding: 3rem 10%;
     text-align: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .footer-content {
@@ -284,7 +285,7 @@ footer {
 }
 
 .social-links a:hover {
-    color: var(--pink);
+    color: var(--lavender);
 }
 
 .footer-links {
@@ -302,7 +303,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--green);
+    color: var(--lavender);
 }
 
 .copyright {

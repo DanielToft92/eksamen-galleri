@@ -127,6 +127,18 @@
     color: var(--dark-text);
 }
 
+
+#first-page {
+    margin-left: 1rem;
+}
+
+@media (max-width: 576px) {
+    #first-page {
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+}
+
 /* Lightbox (vil blive vist via JavaScript) */
 .lightbox {
     display: none;

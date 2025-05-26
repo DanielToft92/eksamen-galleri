@@ -7,7 +7,7 @@ const paintings = Array.from({ length: 64 }, (_, i) => {
         category: getCategory(paintingNumber),
         medium: getMedium(paintingNumber),
         year: getYear(paintingNumber),
-        imageUrl: `images/billeder/${paintingNumber}.jpg`,
+        imageUrl: `billeder/${paintingNumber}.jpg`,  // Ændret fra images/billeder/ til billeder/
         description: `Dette maleri er inspireret af naturen og skabt med stor passion. Værk ${paintingNumber} i serien.`
     };
 });
@@ -36,6 +36,7 @@ const resetButton = document.getElementById('reset-filters');
 const prevButton = document.getElementById('prev-page');
 const nextButton = document.getElementById('next-page');
 const pageInfo = document.getElementById('page-info');
+const firstPageButton = document.getElementById('first-page');
 
 // Pagination variabler
 const itemsPerPage = 12;
@@ -59,16 +60,13 @@ function renderGallery() {
             (medium === 'all' || painting.medium === medium);
     });
 
-    // Sortering
+    // Sortering - ÆNDRET HER: Standard sortering er nu efter ID (nummerisk)
     const sortBy = sortFilter.value;
     filteredPaintings.sort((a, b) => {
-        if (sortBy === 'newest') return b.year - a.year;
-        if (sortBy === 'oldest') return a.year - b.year;
         if (sortBy === 'name') return a.title.localeCompare(b.title);
         return a.id - b.id; // Standard sortering efter ID (nummerisk)
     });
 
-    // Resten af renderGallery funktionen forbliver uændret...
     // Pagination
     const totalPages = Math.ceil(filteredPaintings.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
@@ -117,7 +115,6 @@ function renderGallery() {
     }
 }
 
-// Resten af dine eksisterende funktioner (openLightbox, setupEventListeners) forbliver uændret...
 function openLightbox(painting) {
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -160,6 +157,14 @@ function setupEventListeners() {
     mediumFilter.addEventListener('change', () => {
         currentPage = 1;
         renderGallery();
+    });
+
+    firstPageButton.addEventListener('click', () => {
+        if (currentPage !== 1) {
+            currentPage = 1;
+            renderGallery();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     });
 
     sortFilter.addEventListener('change', renderGallery);

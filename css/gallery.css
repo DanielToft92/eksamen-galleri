@@ -1,8 +1,8 @@
 /* Galleri Hero */
 .gallery-hero {
     height: 50vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../billeder/herovand.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url('../billeder/grafikbilleder/DSCN3227.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +25,7 @@
 /* Filtreringssektion */
 .filters {
     padding: 2rem 0;
-    background-color: var(--blue);
+    background-color: var(--lavender);
 }
 
 .filter-group {

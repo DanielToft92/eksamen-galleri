@@ -128,7 +128,8 @@
 }
 
 .about-link {
-    color: var(--green);
+    color: black;
+    font-size: large;
     font-weight: 600;
     text-decoration: none;
     display: inline-flex;

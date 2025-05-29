@@ -53,6 +53,35 @@ function handleFormSubmit() {
     });
 }
 
+// Tilføj denne funktion til din contact.js
+function handleReservationQuery() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const subject = urlParams.get('subject');
+
+    if (subject === 'reservation') {
+        const subjectDropdown = document.getElementById('subject');
+        if (subjectDropdown) {
+            // Find 'Reservering' option - bemærk at din HTML har en fejl hvor både 'Udstilling' og 'Reservering' har samme value
+            // Vi retter det først ved at finde optionen med teksten "Reservering"
+            const options = subjectDropdown.options;
+            for (let i = 0; i < options.length; i++) {
+                if (options[i].textContent.trim() === 'Reservering') {
+                    subjectDropdown.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+    }
+}
+
+// Opdater din DOMContentLoaded event listener til:
+document.addEventListener('DOMContentLoaded', () => {
+    initMap();
+    setupFAQ();
+    handleFormSubmit();
+    handleReservationQuery(); // Tilføj denne linje
+});
+
 // Initialisering
 document.addEventListener('DOMContentLoaded', () => {
     initMap();

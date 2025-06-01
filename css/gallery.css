@@ -1,7 +1,7 @@
 .gallery-hero {
     height: 50vh;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
-    url('/billeder/grafikbilleder/DSCN3244.jpg') no-repeat center center/cover;
+    url('/billeder/DSCN3244.JPG') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;

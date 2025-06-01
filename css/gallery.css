@@ -110,7 +110,6 @@
     opacity: 1;
 }
 
-/* Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -326,7 +325,6 @@
     }
 }
 
-/* Responsivt design */
 @media (max-width: 992px) {
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

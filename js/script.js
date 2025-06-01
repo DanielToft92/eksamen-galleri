@@ -1,9 +1,7 @@
-// ====== DOM Elements ======
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 const navbar = document.querySelector('.navbar');
 
-// ====== Generelle Funktioner ======
 function setupMobileMenu() {
     if (!hamburger || !navLinks) return;
 
@@ -17,7 +15,6 @@ function setupMobileMenu() {
         }
     });
 
-    // Luk menu ved klik på links
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -61,7 +58,6 @@ function setupSmoothScrolling() {
     });
 }
 
-// ====== Side-specifikke Funktioner ======
 function setupFrontpage() {
     // Galleri hover effekter
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -79,7 +75,6 @@ function setupFrontpage() {
         });
     }
 
-    // Animationer ved scroll
     const animateOnScroll = () => {
         const elements = document.querySelectorAll('.about-teaser, .gallery-preview, .color-showcase');
 
@@ -94,7 +89,6 @@ function setupFrontpage() {
         });
     };
 
-    // Tilføj animationer til elementer
     const animatedElements = document.querySelectorAll('.about-teaser, .gallery-preview, .color-showcase');
     if (animatedElements.length > 0) {
         animatedElements.forEach(element => {
@@ -136,13 +130,11 @@ function setupAboutPage() {
     }
 }
 
-// ====== Initialisering ======
 document.addEventListener('DOMContentLoaded', () => {
     setupMobileMenu();
     setupNavbarScroll();
     setupSmoothScrolling();
 
-    // Automatisk detekter hvilken side der vises
     if (document.querySelector('.gallery-grid')) {
         setupFrontpage();
     }
@@ -151,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Lazy loading af billeder
 if ('IntersectionObserver' in window) {
     const lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
 

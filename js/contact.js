@@ -1,6 +1,4 @@
-// Initialisering af kort
 function initMap() {
-    // Koordinater for Lyngvej 21, Køge (55.4640° N, 12.1704° E)
     const map = L.map('map').setView([55.4640, 12.1704], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -12,7 +10,6 @@ function initMap() {
         .openPopup();
 }
 
-// FAQ funktionalitet
 function setupFAQ() {
     const faqQuestions = document.querySelectorAll('.faq-question');
 
@@ -31,29 +28,23 @@ function setupFAQ() {
     });
 }
 
-// Formular håndtering
 function handleFormSubmit() {
     const contactForm = document.getElementById('contactForm');
 
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        // Form data
         const formData = new FormData(contactForm);
         const data = Object.fromEntries(formData);
 
-        // Simuler formularindsendelse
         console.log('Formular indsendt:', data);
 
-        // Vis succesbesked
         alert('Tak for din besked! Jeg vender tilbage til dig snarest.');
 
-        // Nulstil formular
         contactForm.reset();
     });
 }
 
-// Tilføj denne funktion til din contact.js
 function handleReservationQuery() {
     const urlParams = new URLSearchParams(window.location.search);
     const subject = urlParams.get('subject');
@@ -61,8 +52,6 @@ function handleReservationQuery() {
     if (subject === 'reservation') {
         const subjectDropdown = document.getElementById('subject');
         if (subjectDropdown) {
-            // Find 'Reservering' option - bemærk at din HTML har en fejl hvor både 'Udstilling' og 'Reservering' har samme value
-            // Vi retter det først ved at finde optionen med teksten "Reservering"
             const options = subjectDropdown.options;
             for (let i = 0; i < options.length; i++) {
                 if (options[i].textContent.trim() === 'Reservering') {
@@ -74,7 +63,6 @@ function handleReservationQuery() {
     }
 }
 
-// Opdater din DOMContentLoaded event listener til:
 document.addEventListener('DOMContentLoaded', () => {
     initMap();
     setupFAQ();
@@ -82,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
     handleReservationQuery(); // Tilføj denne linje
 });
 
-// Initialisering
 document.addEventListener('DOMContentLoaded', () => {
     initMap();
     setupFAQ();

@@ -1,4 +1,3 @@
-// Maleri data - nu med konsekvent nummerering og korrekte billedesti
 const paintings = Array.from({ length: 64 }, (_, i) => {
     const paintingNumber = i + 1;
     return {
@@ -7,14 +6,13 @@ const paintings = Array.from({ length: 64 }, (_, i) => {
         category: getCategory(paintingNumber),
         medium: getMedium(paintingNumber),
         year: getYear(paintingNumber),
-        imageUrl: `billeder/${paintingNumber}.jpg`,  // Ændret fra images/billeder/ til billeder/
+        imageUrl: `billeder/${paintingNumber}.jpg`,
         description: `Dette maleri er inspireret af naturen og skabt med stor passion. Værk ${paintingNumber} i serien.`
     };
 });
 
-// Hjælpefunktioner for at give meningfuld data baseret på maleri nummer
 function getCategory(number) {
-    const categories = ['landscape', 'flowers', 'animals', 'seasons'];
+    const categories = ['landscape', 'flowers', 'seasons'];
     return categories[number % categories.length];
 }
 
@@ -24,7 +22,7 @@ function getMedium(number) {
 }
 
 function getYear(number) {
-    return 2020 + (number % 4); // Fordeler årene mellem 2020-2023
+    return 2020 + (number % 6);
 }
 
 const galleryGrid = document.getElementById('gallery-grid');
@@ -37,18 +35,15 @@ const nextButton = document.getElementById('next-page');
 const pageInfo = document.getElementById('page-info');
 const firstPageButton = document.getElementById('first-page');
 
-// Pagination variabler
 const itemsPerPage = 12;
 let currentPage = 1;
 let filteredPaintings = [...paintings];
 
-// Initialisering
 document.addEventListener('DOMContentLoaded', () => {
     renderGallery();
     setupEventListeners();
 });
 
-// Render galleri
 function renderGallery() {
     // Filtrering
     const category = categoryFilter.value;
@@ -59,19 +54,16 @@ function renderGallery() {
             (medium === 'all' || painting.medium === medium);
     });
 
-    // Sortering
     const sortBy = sortFilter.value;
     filteredPaintings.sort((a, b) => {
         if (sortBy === 'name') return a.title.localeCompare(b.title);
         return a.id - b.id; // Standard sortering efter ID (nummerisk)
     });
 
-    // Pagination
     const totalPages = Math.ceil(filteredPaintings.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const paginatedPaintings = filteredPaintings.slice(startIndex, startIndex + itemsPerPage);
 
-    // Render malerier
     galleryGrid.innerHTML = '';
     paginatedPaintings.forEach(painting => {
         const paintingElement = document.createElement('div');
@@ -89,12 +81,10 @@ function renderGallery() {
         galleryGrid.appendChild(paintingElement);
     });
 
-    // Opdater pagination
     pageInfo.textContent = `Side ${currentPage} af ${totalPages}`;
     prevButton.disabled = currentPage === 1;
     nextButton.disabled = currentPage === totalPages || totalPages === 0;
 
-    // Lazy loading
     if ('IntersectionObserver' in window) {
         const lazyImages = [].slice.call(document.querySelectorAll('img.lazy'));
         const lazyImageObserver = new IntersectionObserver((entries) => {
@@ -114,7 +104,6 @@ function renderGallery() {
     }
 }
 
-// Forbedret Lightbox funktion
 function openLightbox(painting) {
     const lightbox = document.createElement('div');
     lightbox.className = 'lightbox';
@@ -164,21 +153,18 @@ function openLightbox(painting) {
     `;
 
     document.body.appendChild(lightbox);
-    document.body.style.overflow = 'hidden'; // Forhindrer scrolling i baggrunden
+    document.body.style.overflow = 'hidden';
 
-    // Luk lightbox
     lightbox.querySelector('.close-lightbox').addEventListener('click', () => {
         closeLightbox(lightbox);
     });
 
-    // Luk ved at klikke udenfor indholdet
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
             closeLightbox(lightbox);
         }
     });
 
-    // Navigation mellem malerier
     const currentIndex = filteredPaintings.findIndex(p => p.id === painting.id);
 
     if (currentIndex > 0) {
@@ -201,7 +187,6 @@ function openLightbox(painting) {
         lightbox.querySelector('.next-button').style.visibility = 'hidden';
     }
 
-    // Tilføj keyboard navigation
     function handleKeyDown(e) {
         if (e.key === 'Escape') {
             closeLightbox(lightbox);
@@ -216,7 +201,6 @@ function openLightbox(painting) {
 
     document.addEventListener('keydown', handleKeyDown);
 
-    // Fjern event listener når lightbox lukkes
     lightbox._handleKeyDown = handleKeyDown;
 }
 
